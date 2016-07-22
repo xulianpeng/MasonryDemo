@@ -29,9 +29,18 @@
   [self.growingButton addTarget:self action:@selector(onGrowButtonTaped:) forControlEvents:UIControlEventTouchUpInside];
   [self.view addSubview:self.growingButton];
   self.isExpanded = NO;
+    /**
+     *  remakeConstraints的特殊之处:必须得有初始化约束,否则不显示.
+     *
+     */
+    [self.growingButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.mas_equalTo(self.view).offset(100);
+        make.width.mas_equalTo(100);
+        make.height.mas_equalTo(120);
+    }];
 }
 
-- (void)updateViewConstraints {
+- (void)updateViewConstraints { 
   // 这里使用update也是一样的。
   // remake会将之前的全部移除，然后重新添加
   __weak __typeof(self) weakSelf = self;

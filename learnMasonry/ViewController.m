@@ -29,29 +29,31 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  
-  self.tableView = [[UITableView alloc] init];
-  self.tableView.delegate = self;
-  self.tableView.dataSource = self;
-  [self.view addSubview:self.tableView];
-  [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-    make.edges.mas_equalTo(self.view);
-  }];
-
-  self.controllers = @[
-                       [[BasicController alloc] initWithTitle:@"基础使用"],
-                       [[UpdateConstraintsController alloc] initWithTitle:@"动画更新约束"],
-                       [[RemakeContraintsController alloc] initWithTitle:@"动画重新添加约束"],
-                       [[TotalUpdateController alloc] initWithTitle:@"整体动画更新约束"],
-                       [[CompositeController alloc] initWithTitle:@"复合view循环约束"],
-                       [[AspectFitController alloc] initWithTitle:@"约束百分比"],
-                       [[BasicAnimatedController alloc] initWithTitle:@"基本动画"],
-                       [[ScrollViewController alloc] initWithTitle:@"ScrollView布局"],
-                       [[ScrollViewComplexController alloc] initWithTitle:@"复杂ScrollView"],
-                       [[TableViewController alloc] initWithTitle:@"tableview布局"],
-                       [[HeaderFooterViewController alloc] initWithTitle:@"header/footer layout"],
-                       ];
+    [super viewDidLoad];
+    
+    self.tableView = [[UITableView alloc] init];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+    self.tableView.backgroundColor = [UIColor grayColor];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.top.right.mas_equalTo(self.view);
+        make.bottom.mas_equalTo(self.view).offset(- 49);
+    }];
+    
+    self.controllers = @[
+                         [[BasicController alloc] initWithTitle:@"基础使用"],
+                         [[UpdateConstraintsController alloc] initWithTitle:@"动画更新约束"],
+                         [[RemakeContraintsController alloc] initWithTitle:@"动画重新添加约束"],
+                         [[TotalUpdateController alloc] initWithTitle:@"整体动画更新约束"],
+                         [[CompositeController alloc] initWithTitle:@"复合view循环约束"],
+                         [[AspectFitController alloc] initWithTitle:@"约束百分比"],
+                         [[BasicAnimatedController alloc] initWithTitle:@"基本动画"],
+                         [[ScrollViewController alloc] initWithTitle:@"ScrollView布局"],
+                         [[ScrollViewComplexController alloc] initWithTitle:@"复杂ScrollView"],
+                         [[TableViewController alloc] initWithTitle:@"tableview布局"],
+                         [[HeaderFooterViewController alloc] initWithTitle:@"header/footer layout"],
+                         ];
 }
 
 #pragma mark - UITableViewDataSource
@@ -66,7 +68,7 @@
   }
   
   cell.textLabel.text = viewController.title;
-  
+  cell.backgroundColor = [UIColor clearColor];
   return cell;
 }
 

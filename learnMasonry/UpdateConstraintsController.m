@@ -22,9 +22,9 @@
   
   
   [self configUI];
-  return;
+//  return;
   
-  self.growingButton = [UIButton buttonWithType:UIButtonTypeSystem];
+  self.growingButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
   [self.growingButton setTitle:@"点我放大" forState:UIControlStateNormal];
   self.growingButton.layer.borderColor = UIColor.greenColor.CGColor;
   self.growingButton.layer.borderWidth = 3;
@@ -33,14 +33,19 @@
   [self.view addSubview:self.growingButton];
   self.scacle = 1.0;
   
-  [self.growingButton mas_updateConstraints:^(MASConstraintMaker *make) {
-    make.center.mas_equalTo(self.view);
-    
-    // 初始宽、高为100，优先级最低
-    make.width.height.mas_equalTo(100 * self.scacle).priorityLow();
-    // 最大放大到整个view
-    make.width.height.lessThanOrEqualTo(self.view);
-  }];
+    /**
+     *  更新约束的特殊之处:当其没有初始化约束时,更新约束可以为其创建本来要更新的约束
+     *
+     *
+     */
+//  [self.growingButton mas_updateConstraints:^(MASConstraintMaker *make) {
+//    make.center.mas_equalTo(self.view);
+//    
+//    // 初始宽、高为100，优先级最低
+//    make.width.height.mas_equalTo(100 * self.scacle).priorityLow();
+//    // 最大放大到整个view
+//    make.width.height.lessThanOrEqualTo(self.view);
+//  }];
 }
 
 #pragma mark - updateViewConstraints
