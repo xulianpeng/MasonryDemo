@@ -23,8 +23,8 @@
     
     MyselfViewController *myVC = [[MyselfViewController alloc]init];
     myVC.title = @"自己";
-    self.viewControllers = @[vc,myVC];
-//    vc.tabBarItem.t =
+//    self.viewControllers = @[vc,myVC];
+    [self setViewControllers:@[vc,myVC] animated:YES];
     
  
 }
