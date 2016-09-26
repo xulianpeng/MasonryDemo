@@ -26,6 +26,11 @@
 //    self.viewControllers = @[vc,myVC];
     [self setViewControllers:@[vc,myVC] animated:YES];
     
+    /**
+     *  什么情况啊
+     *
+     *  @return 好吧只是个测试
+     */
  
 }
 
